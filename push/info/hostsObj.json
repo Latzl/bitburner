@@ -1,0 +1,58 @@
+{
+    "myHosts": [
+        "16.00TB",
+        "8.00TB-0",
+        "8.00TB",
+        "2.00TB",
+        "1.00TB",
+        "512.00GB",
+        "256.00GB-0",
+        "256.00GB",
+        "128.00GB",
+        "16.00GB"
+    ],
+    "accessedHosts": [
+        "omega-net",
+        "silver-helix",
+        "phantasy",
+        "iron-gym",
+        "max-hardware",
+        "zer0",
+        "neo-net",
+        "harakiri-sushi",
+        "hong-fang-tea",
+        "nectar-net",
+        "joesguns",
+        "sigma-cosmetics",
+        "foodnstuff",
+        "n00dles",
+        "CSEC",
+        "avmnite-02h"
+    ],
+    "mine2accessed": {
+        "sourceHost": [
+            "16.00TB",
+            "8.00TB-0",
+            "8.00TB",
+            "2.00TB",
+            "1.00TB",
+            "512.00GB",
+            "256.00GB-0",
+            "256.00GB",
+            "128.00GB",
+            "16.00GB"
+        ],
+        "targetHost": [
+            "omega-net",
+            "silver-helix",
+            "phantasy",
+            "iron-gym",
+            "max-hardware",
+            "zer0",
+            "neo-net",
+            "harakiri-sushi",
+            "hong-fang-tea",
+            "nectar-net"
+        ]
+    }
+}

@@ -1,0 +1,63 @@
+[
+    {
+        "hacking": 85993.21474149957,
+        "strength": 1429.2015266211472,
+        "defense": 1429.2015266211472,
+        "dexterity": 1429.2015266211472,
+        "agility": 1429.2015266211472,
+        "charisma": 2858.4030532422944,
+        "intelligence": 0
+    },
+    {
+        "hacking_chance_mult": 1.1221104888400533,
+        "mults": {
+            "hacking_chance": 1.1221104888400533,
+            "hacking_speed": 1.0405024532880494,
+            "hacking_money": 1.0201004444000483,
+            "hacking_grow": 1.0201004444000483,
+            "hacking": 1.0201004444000483,
+            "strength": 1.0201004444000483,
+            "defense": 1.0201004444000483,
+            "dexterity": 1.0201004444000483,
+            "agility": 1.0201004444000483,
+            "charisma": 1.0201004444000483,
+            "hacking_exp": 1.1425124977280543,
+            "strength_exp": 1.0201004444000483,
+            "defense_exp": 1.0201004444000483,
+            "dexterity_exp": 1.0201004444000483,
+            "agility_exp": 1.0201004444000483,
+            "charisma_exp": 1.0201004444000483,
+            "company_rep": 1.1731155110600555,
+            "faction_rep": 1.1731155110600555,
+            "crime_money": 1.0201004444000483,
+            "crime_success": 1.0201004444000483,
+            "hacknet_node_money": 1.0201004444000483,
+            "hacknet_node_purchase_cost": 0.9802956223473953,
+            "hacknet_node_ram_cost": 0.9802956223473953,
+            "hacknet_node_core_cost": 0.9802956223473953,
+            "hacknet_node_level_cost": 0.9802956223473953,
+            "work_money": 1.1221104888400533,
+            "bladeburner_max_stamina": 1,
+            "bladeburner_stamina_gain": 1,
+            "bladeburner_analysis": 1,
+            "bladeburner_success_chance": 1
+        },
+        "numPeopleKilled": 0,
+        "money": 4598611.847205127,
+        "city": "Volhaven",
+        "location": "OmniTek Incorporated",
+        "bitNodeN": 1,
+        "totalPlaytime": 278109800,
+        "playtimeSinceLastAug": 20196000,
+        "playtimeSinceLastBitnode": 278109800,
+        "jobs": {
+            "FoodNStuff": "Employee",
+            "Joe's Guns": "Employee"
+        },
+        "factions": [],
+        "tor": false,
+        "inBladeburner": false,
+        "hasCorporation": false,
+        "entropy": 0
+    }
+]
