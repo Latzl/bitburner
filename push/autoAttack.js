@@ -106,8 +106,6 @@ class Target {
         this.ns.growthAnalyzeSecurity(thread, this.host, this.cores) +
         currSecurity;
 
-    if (finalSecurity > this.maxSecurity)
-      thread = this.reduceThread(thread, files[1]);
     if (thread > 0) {
       ram = this.ns.getScriptRam(files[1], 'home') * thread;
       var temp = this.selectMyServer(ram);
