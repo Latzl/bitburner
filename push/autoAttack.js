@@ -14,8 +14,8 @@ export async function main(ns) {
   var hostsObj = JSON.parse(ns.read(hostsObjFile));
   myServers =
       hostsObj.myHosts.reverse();  // my servers list sorted by ascending;
-  myServers =
-      myServers.concat(hostsObj.accessedHosts);  // include target servers
+  myServers = myServers.concat(hostsObj.accessedHosts)
+                  .concat('home');  // include target servers and home
 
   var targetHost = ns.args[0];
   var target = new Target(ns, targetHost);
