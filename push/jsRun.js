@@ -26,7 +26,8 @@ export async function main(ns) {
 function autoAttack(ns) {
   ns.print('-------------------- autoAttack --------------------')
   var json = JSON.parse(ns.read(file2read));
-  var hosts = json.accessedHosts;
+  var hosts =
+      json.accessedHosts.reverse();  // start from js that need least ram
   for (let i = 0; i < hosts.length; ++i) {
     var target = hosts[i];
     if (ns.getServerMaxMoney(target) == 0) {

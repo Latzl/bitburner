@@ -1,69 +1,69 @@
-n00dles (O) -d1
-foodnstuff (O) -d1
-sigma-cosmetics (O) -d1
-| max-hardware (O) -d2
-| | omega-net (X) -d3
-joesguns (O) -d1
-hong-fang-tea (O) -d1
-harakiri-sushi (O) -d1
-| nectar-net (O) -d2
-| | neo-net (O) -d3
-| | | the-hub (X) -d4
-| | | johnson-ortho (X) -d4
-| | | | summit-uni (X) -d5
-| | | crush-fitness (X) -d4
-| | | avmnite-02h (X) -d4
-| | | | zb-institute (X) -d5
-| | | | | rho-construction (X) -d6
-| | | | | | aerocorp (X) -d7
-| | | | | | | omnia (X) -d8
-| | | | | | | | solaris (X) -d9
-| | | | | | | | | infocomm (X) -d10
-| | | | | | | | | | applied-energetics (X) -d11
-| | | | | | | deltaone (X) -d8
-| | | | | | | | defcomm (X) -d9
-| | | | | | | | icarus (X) -d9
-| | | | | | | | | zb-def (X) -d10
-| | | | | | | | | | titan-labs (X) -d11
-| | | | | | | | | | | stormtech (X) -d12
-| | | | | | | | | | | helios (X) -d12
-| | | | | | | | | | | | . (X) -d13
-| | | | | | | | | | | | | clarkinc (X) -d14
-| | | | | | | | | | | | | | fulcrumassets (X) -d15
-| | | | | | | | | | | | | powerhouse-fitness (X) -d14
-| | | | | | | unitalife (X) -d8
-| | | | | | | | univ-energy (X) -d9
-| | | | | | | | | nova-med (X) -d10
-| | | | | | | | | | microdyne (X) -d11
-| | | | | | | | | | | fulcrumtech (X) -d12
-| | | | | | | | | | | | omnitek (X) -d13
-| | | | | | | | | | | | | b-and-a (X) -d14
-| | | | | | | | | | | | | | ecorp (X) -d15
-| | | | | | | | | | | | | | megacorp (X) -d15
-| | | | | | | | | | | | 4sigma (X) -d13
-| | | | | | | | | | | | | blade (X) -d14
-| | | | | | | | | | | | | | The-Cave (X) -d15
-| | | | | | | | | | | | | nwo (X) -d14
-| | | | | | | | | | run4theh111z (X) -d11
-| | | | | | | | | | | vitalife (X) -d12
-| | | | | | | | | | | | kuai-gong (X) -d13
-| | | | | | | | zeus-med (X) -d9
-| | | | | | | | | taiyang-digital (X) -d10
-| | | | | | global-pharm (X) -d7
-| CSEC (O) -d2
-| | silver-helix (X) -d3
-| | | computek (X) -d4
-| | | | catalyst (X) -d5
-| | phantasy (X) -d3
-| | | netlink (X) -d4
-| | | | rothman-uni (X) -d5
-| | | | | aevum-police (X) -d6
-| | | | | | galactic-cyber (X) -d7
-| | | | | | snap-fitness (X) -d7
-| | | | syscore (X) -d5
-| | | | | lexo-corp (X) -d6
-| | | | | alpha-ent (X) -d6
-| | | | | millenium-fitness (X) -d6
-| | | | I.I.I.I (X) -d5
-iron-gym (O) -d1
-| zer0 (O) -d2
+n00dles (O) -d1- -Noodle Bar-
+foodnstuff (O) -d1- -FoodNStuff-
+| zer0 (O) -d2- -ZER0 Nightclub-
+| CSEC (O) -d2- -CyberSec-
+| | phantasy (O) -d3- -Phantasy Club-
+sigma-cosmetics (O) -d1- -Sigma Cosmetics-
+| nectar-net (O) -d2- -Nectar Nightclub Network-
+| | silver-helix (O) -d3- -Silver Helix-
+| | | the-hub (O) -d4- -The Hub-
+| | | johnson-ortho (O) -d4- -Johnson Orthopedics-
+| | | avmnite-02h (O) -d4- -NiteSec-
+| | | | syscore (O) -d5- -SysCore Securities-
+| | | | | alpha-ent (O) -d6- -Alpha Enterprises-
+| | | | | | global-pharm (O) -d7- -Global Pharmaceuticals-
+| | | | | | | omnia (O) -d8- -Omnia Cybersystems-
+| | | | | | | | defcomm (O) -d9- -DefComm-
+| | | | | | | | | infocomm (O) -d10- -InfoComm-
+| | | | | | | | | | microdyne (O) -d11- -Microdyne Technologies-
+| | | | | | | | | | | fulcrumtech (X) -d12- -Fulcrum Technologies-
+| | | | | | | | | taiyang-digital (O) -d10- -Taiyang Digital-
+| | | | | | | | | | titan-labs (O) -d11- -Titan Laboratories-
+| | | | | | | | | | | stormtech (X) -d12- -Storm Technologies-
+| | | | | | | | | | | | omnitek (X) -d13- -OmniTek Incorporated-
+| | | | | | | | | | | | | powerhouse-fitness (O) -d14- -Powerhouse Fitness-
+| | | | | | | | | | | vitalife (O) -d12- -VitaLife-
+| | | | | | | | | | applied-energetics (O) -d11- -Applied Energetics-
+| | | | | | | | | nova-med (O) -d10- -Nova Medical-
+| | | | | | | | | | run4theh111z (O) -d11- -The Runners-
+| | | | | | | | | | | helios (O) -d12- -Helios Labs-
+| | | | | | | | | | | | 4sigma (X) -d13- -Four Sigma-
+| | | | | | | | | | | | | blade (O) -d14- -Blade Industries-
+| | | | | | | | | | | | kuai-gong (O) -d13- -KuaiGong International-
+| | | | | | | | | | | | | nwo (X) -d14- -NWO-
+| | | | | | | | | | | | | clarkinc (X) -d14- -Clarke Incorporated-
+| | | | | | | | | | | | | | megacorp (X) -d15- -MegaCorp-
+| | | | | | | | | | | | | | fulcrumassets (X) -d15- -Fulcrum Technologies-
+| | | | | | | | | | | | | | The-Cave (O) -d15- -Helios-
+| | | | | | | | | | | | . (O) -d13- -.-
+| | | | | | | | | | | | | b-and-a (O) -d14- -Bachman & Associates-
+| | | | | | | | | | | | | | ecorp (X) -d15- -ECorp-
+| | | | | | | | solaris (O) -d9- -Solaris Space Systems-
+| | | | | | snap-fitness (O) -d7- -Snap Fitness-
+| | | | | | | unitalife (O) -d8- -UnitaLife Group-
+| | | | | | | | zeus-med (O) -d9- -Zeus Medical-
+| | | | I.I.I.I (O) -d5- -I.I.I.I-
+| | | | | millenium-fitness (O) -d6- -Millenium Fitness Network-
+| | omega-net (O) -d3- -Omega Software-
+| | | netlink (O) -d4- -NetLink Technologies-
+| | | | rothman-uni (O) -d5- -Rothman University-
+| | | | | aevum-police (O) -d6- -Aevum Police Headquarters-
+| | | | | | galactic-cyber (O) -d7- -Galactic Cybersystems-
+| | | | summit-uni (O) -d5- -Summit University-
+| | | | catalyst (O) -d5- -Catalyst Ventures-
+| | | | | lexo-corp (O) -d6- -LexoCorp-
+| | | crush-fitness (O) -d4- -Crush Fitness-
+| | | | zb-institute (O) -d5- -ZB Institute of Technology-
+| | | | | rho-construction (O) -d6- -Rho Construction-
+| | | | | | aerocorp (O) -d7- -AeroCorp-
+| | | | | | | deltaone (O) -d8- -DeltaOne-
+| | | | | | | | icarus (O) -d9- -Icarus Microsystems-
+| | | | | | | | univ-energy (O) -d9- -Universal Energy-
+| | | | | | | | | zb-def (O) -d10- -ZB Defense Industries-
+joesguns (O) -d1- -Joe's Guns-
+hong-fang-tea (O) -d1- -HongFang Teahouse-
+harakiri-sushi (O) -d1- -HaraKiri Sushi Bar Network-
+iron-gym (O) -d1- -Iron Gym Network-
+| max-hardware (O) -d2- -Max Hardware Store-
+| | neo-net (O) -d3- -Neo Nightclub Network-
+| | | computek (O) -d4- -CompuTek-

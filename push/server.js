@@ -60,7 +60,6 @@ export async function main(ns) {
         break;
     }
   }
-
   hackToolsHave = [];
 }
 
@@ -189,7 +188,8 @@ class Tree {
         strings += '| '
       }
       strings += host + (ms.hasRootAccess(host) ? ' (O)' : ' (X)') + ' -d' +
-          node.distance + '\n'
+          node.distance + '- -' + node.info.organizationName + '-' +
+          '\n'
     }
     ms.write(file2wirte, strings, 'w');
     ms.tprint('<<< map in ', file2wirte, ' has been writeen.')

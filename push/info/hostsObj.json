@@ -1,18 +1,28 @@
 {
     "myHosts": [
-        "16.00TB",
-        "8.00TB-0",
-        "8.00TB",
+        "32.00TB-0",
+        "32.00TB",
         "2.00TB",
         "1.00TB",
+        "512.00GB-0",
         "512.00GB",
-        "256.00GB-0",
         "256.00GB",
         "128.00GB",
         "16.00GB"
     ],
     "accessedHosts": [
+        "rho-construction",
+        "catalyst",
+        "aevum-police",
+        "summit-uni",
+        "netlink",
+        "millenium-fitness",
+        "computek",
+        "rothman-uni",
+        "the-hub",
+        "johnson-ortho",
         "omega-net",
+        "crush-fitness",
         "silver-helix",
         "phantasy",
         "iron-gym",
@@ -27,32 +37,32 @@
         "foodnstuff",
         "n00dles",
         "CSEC",
-        "avmnite-02h"
+        "avmnite-02h",
+        "I.I.I.I",
+        "run4theh111z"
     ],
     "mine2accessed": {
         "sourceHost": [
-            "16.00TB",
-            "8.00TB-0",
-            "8.00TB",
+            "32.00TB-0",
+            "32.00TB",
             "2.00TB",
             "1.00TB",
+            "512.00GB-0",
             "512.00GB",
-            "256.00GB-0",
             "256.00GB",
             "128.00GB",
             "16.00GB"
         ],
         "targetHost": [
-            "omega-net",
-            "silver-helix",
-            "phantasy",
-            "iron-gym",
-            "max-hardware",
-            "zer0",
-            "neo-net",
-            "harakiri-sushi",
-            "hong-fang-tea",
-            "nectar-net"
+            "rho-construction",
+            "catalyst",
+            "aevum-police",
+            "summit-uni",
+            "netlink",
+            "millenium-fitness",
+            "computek",
+            "rothman-uni",
+            "the-hub"
         ]
     }
 }
