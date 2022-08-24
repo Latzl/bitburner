@@ -3,7 +3,7 @@ import * as allin from './allin'
 const hostsObjFile = 'hostsObj.script';
 var files = [];
 var myServers = [];
-
+var cnt = 0;
 /* auto attack target server according to args[0], automatically choose source
  * server that perform hack, grow, weaken */
 export async function main(ns) {
@@ -11,11 +11,7 @@ export async function main(ns) {
   ns.disableLog('ALL')
   files = allin.getFiles(ns, 'attackFiles.script');  // hack grow weaken
 
-  var hostsObj = JSON.parse(ns.read(hostsObjFile));
-  myServers =
-      hostsObj.myHosts.reverse();  // my servers list sorted by ascending;
-  myServers = myServers.concat(hostsObj.accessedHosts)
-                  .concat('home');  // include target servers and home
+  getMyServer(ns);
 
   var targetHost = ns.args[0];
   var target = new Target(ns, targetHost);
@@ -27,8 +23,10 @@ class Target {
     this.ns = ns;
     this.host = targethost;
     this.minSecurity = this.ns.getServerMinSecurityLevel(this.host);
-    this.maxSecurity = 30;  // this.minSecurity * 2;
+    this.maxSecurity = 40;  // this.minSecurity * 2;
     this.maxMoney = this.ns.getServerMaxMoney(this.host);
+    this.minMoney = this.maxMoney *
+        0.1;  // sset threshold, too low would make thread = -1 on hack;
     this.sourceHost = '';
     this.cores = 1;
     this.runTimes = [0, 0, 0]  //[hack,grow,weaken];
@@ -38,11 +36,17 @@ class Target {
   selectMyServer(ram) {
     var maxRam = 0, maxRamIndex = 0;
     for (let i = 0; i < myServers.length; ++i) {
+      if (!this.ns.fileExists(files[files.length - 1], myServers[i]))
+        continue;  // deal with a new server do not receive copy in time;
+      if (myServers[i] == 'home')  // remain 50GB for home;
+        var remain = 50;
+      else
+        var remain = 0;
       if (this.ns.getServerMaxRam(myServers[i]) -
               this.ns.getServerUsedRam(myServers[i]) >
-          maxRam) {
+          maxRam + remain) {
         maxRam = this.ns.getServerMaxRam(myServers[i]) -
-            this.ns.getServerUsedRam(myServers[i]);
+            this.ns.getServerUsedRam(myServers[i]) - remain;
         maxRamIndex = i;
       }
       if (maxRam > ram) return i;
@@ -52,16 +56,16 @@ class Target {
   // get and adjust info about thread,sourceHost before hack;
   infoPreHack() {
     this.ns.print('>>> infoPreHack() calling...');
-    if (this.ns.getServerMoneyAvailable(this.host) < this.maxMoney * 0.75) {
+    if (this.ns.getServerMoneyAvailable(this.host) < this.minMoney) {
       this.ns.print('<<< infoPreHack() out with: not enough money.');
       return -1;  // need grow
     }
     var finalSecurity, currSecurity, thread, ram, sourceHost;
     currSecurity = this.ns.getServerSecurityLevel(this.host);
-    thread =
-        Math.trunc(this.ns.hackAnalyzeThreads(this.host, 0.25 * this.maxMoney));
+    thread = Math.trunc(
+        this.ns.hackAnalyzeThreads(this.host, this.maxMoney - this.minMoney));
     if (thread == -1) {
-      this.ns.print('<<< infoPreHack() out with: not enough money.');
+      this.ns.print('<<< infoPreHack() out with: thread = -1.');
       return -1;  // hack money=0;
     }
     finalSecurity =
@@ -206,7 +210,7 @@ class Target {
     var inPort;
     do {
       inPort = this.ns.peek(port);
-      await this.ns.sleep(500);
+      await this.ns.sleep(200);
     } while (inPort == 'NULL PORT DATA' ||
              !(JSON.parse(inPort).targetHost == this.host &&
                JSON.parse(inPort).sourceHost == this.sourceHost));
@@ -226,6 +230,9 @@ class Target {
       if ((thread = this.infoPreHack()) > 0) await this.execAction(0, thread);
       if ((thread = this.infoPreGrow()) > 0) await this.execAction(1, thread);
       if ((thread = this.infoPreWeaken()) > 0) await this.execAction(2, thread);
+
+      getMyServer(this.ns);  // refresh server list to be sourceHost;
+      await this.ns.sleep(1);
     }
   }
   // main action;
@@ -275,4 +282,9 @@ class Target {
         '\n----------------------------------------';
     return outStr;
   }
+}
+
+function getMyServer(ns) {
+  let hostsObj = JSON.parse(ns.read(hostsObjFile));
+  myServers = hostsObj.ramHosts;
 }

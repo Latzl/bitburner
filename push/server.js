@@ -51,8 +51,8 @@ export async function main(ns) {
         var hacked = tre.hackAllNode();
         if (hacked.length > 0) {
           tre.writeHostObj();
-          tre.getMap();
           ms.exec(copyScript, 'home');
+          tre.getMap();
         }
         break;
       default:
@@ -170,7 +170,7 @@ class Tree {
 
     return this.myHosts = sort(rams, myServerHosts, descending);
   }
-  sortAccessedHosts(descending = 1) {
+  sortAccessedHosts(descending = 1) {  // sort according to money
     var moneys = [];
     for (var i = 0; i < this.accessedHosts.length; ++i) {
       var node = this.tree[this.accessedHosts[i]];
@@ -215,20 +215,32 @@ class Tree {
   }
 
   outHostObj() {
-    const accessedHosts = 'accessedHosts', myHost = 'myHosts',
-          mine2accessed = 'mine2accessed', sourceHost = 'sourceHost',
-          targetHost = 'targetHost';
+    const accessedHosts = 'accessedHosts', myHosts = 'myHosts',
+          ramHosts = 'ramHosts', targetHost = 'targetHosts';
 
-    var arr_AH = this.sortAccessedHosts(), arr_MH = this.getMyServers(),
-        arr_SH = this.myHosts, arr_TH = [];
-    for (var i = 0; i < this.myHosts.length;
-         ++i) {  // sourceHost.length=targetHost.length
-      arr_TH.push(arr_AH[i]);
-    }
+    var arr_acchost = this.sortAccessedHosts(),
+        arr_myhost = this.getMyServers(), arr_target = _.cloneDeep(arr_acchost),
+        arr_ram =
+            arr_myhost.reverse().concat('home');  //_.cloneDeep(arr_acchost);
+
+    // var rams = [];
+    // for (let i = 0; i < arr_ram.length; ++i)
+    //   rams.push(ms.getServerMaxRam(arr_ram[i]));
+    // arr_ram = sort(rams, arr_ram, 1);
+    // for (let i = arr_ram.length - 1; ms.getServerMaxRam(arr_ram[i]) <= 0;
+    // --i)
+    //   arr_ram.pop();
+    // arr_ram = arr_ram.reverse().concat(arr_myhost.reverse(), 'home');
+
+    for (let i = arr_target.length - 1; this.tree[arr_target[i]].maxMoney == 0;
+         --i)
+      arr_target.pop();
+
     var obj = {
-      [myHost]: arr_MH,
-      [accessedHosts]: arr_AH,
-      [mine2accessed]: {[sourceHost]: arr_SH, [targetHost]: arr_TH}
+      [myHosts]: arr_myhost,
+      [targetHost]: arr_target,
+      [ramHosts]: arr_ram,
+      [accessedHosts]: arr_acchost,
     };
     return obj;
   }
