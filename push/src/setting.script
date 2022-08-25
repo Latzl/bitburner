@@ -1,0 +1,9 @@
+{
+    "autoAttack": {
+        "minMoneyFact": 0.3
+    },
+    "server": {
+        "sourceOnTarget": true,
+        "sourceOnHome": true
+    }
+}

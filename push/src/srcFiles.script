@@ -1,0 +1,9 @@
+{
+    "dir": "/src/",
+    "files": [
+        "setting.script",
+        "attackFiles.script",
+        "allin.js",
+        "hostsObj.script"
+    ]
+}
