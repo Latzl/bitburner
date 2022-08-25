@@ -1,0 +1,8 @@
+{
+    "dir": "/attack/",
+    "files": [
+        "hack.js",
+        "grow.js",
+        "weaken.js"
+    ]
+}

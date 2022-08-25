@@ -3,17 +3,19 @@
 /** @param {NS} ms */
 /** @param {NS} ns */
 
-import {bitFix, moneyFix, removeArr, sort} from './allin';
+import {bitFix, moneyFix, removeArr, sort} from './src/allin';
+
+const settingFile = '/src/setting.script';
 const copyScript = 'copyAttack.js';
 const rootname = 'root';
+var hackToolsHave = [], setting;
 let ms;
-
 const portHackTools = [
   'BruteSSH.exe', 'FTPCrack.exe', 'relaySMTP.exe', 'HTTPWorm.exe',
   'SQLInject.exe'
 ];
 // caculate how tool I have;
-var hackToolsHave = [];
+
 function predue() {
   for (var i = 0; i < portHackTools.length; ++i) {
     if (ms.fileExists(portHackTools[i], 'home'))
@@ -26,7 +28,8 @@ export async function main(ns) {
   ms = ns;
   ms.clearLog();
   predue();
-
+  // ms.disableLog('ALL');
+  setting = JSON.parse(ns.read(settingFile)).server;
   let root = new Node('home', rootname);
   let tre = new Tree(root)
   for (var i = 0; i < ms.args.length; ++i) {
@@ -49,6 +52,7 @@ export async function main(ns) {
       case 'all':  // auto hack nodes and rewrite hostObj, get map and copy
                    // attack files to new hacked servers;
         var hacked = tre.hackAllNode();
+        ms.tprint(hacked);
         if (hacked.length > 0) {
           tre.writeHostObj();
           ms.exec(copyScript, 'home');
@@ -65,7 +69,7 @@ export async function main(ns) {
 
 class Node {
   constructor(host, up) {
-    ms.disableLog('ALL');
+    // ms.disableLog('ALL');
     this.host = host;
     this.info = ms.getServer(this.host);
     this.up = up;
@@ -135,7 +139,7 @@ class Node {
 
 class Tree {
   constructor(root) {
-    ms.disableLog('ALL');
+    // ms.disableLog('ALL');
     this.root = root;
     this.nodeTraverse();
     this.myServers = {};
@@ -220,17 +224,23 @@ class Tree {
 
     var arr_acchost = this.sortAccessedHosts(),
         arr_myhost = this.getMyServers(), arr_target = _.cloneDeep(arr_acchost),
-        arr_ram =
-            arr_myhost.reverse().concat('home');  //_.cloneDeep(arr_acchost);
+        arr_ram;
+    if (setting.sourceOnTarget)
+      arr_ram = _.cloneDeep(arr_acchost);
+    else
+      arr_ram = arr_myhost.reverse();
 
-    // var rams = [];
-    // for (let i = 0; i < arr_ram.length; ++i)
-    //   rams.push(ms.getServerMaxRam(arr_ram[i]));
-    // arr_ram = sort(rams, arr_ram, 1);
-    // for (let i = arr_ram.length - 1; ms.getServerMaxRam(arr_ram[i]) <= 0;
-    // --i)
-    //   arr_ram.pop();
-    // arr_ram = arr_ram.reverse().concat(arr_myhost.reverse(), 'home');
+    // include targetHosts as sourceHosts
+    if (setting.sourceOnTarget) {
+      var rams = [];
+      for (let i = 0; i < arr_ram.length; ++i)
+        rams.push(ms.getServerMaxRam(arr_ram[i]));
+      arr_ram = sort(rams, arr_ram, 1);
+      for (let i = arr_ram.length - 1; ms.getServerMaxRam(arr_ram[i]) <= 0; --i)
+        arr_ram.pop();
+      arr_ram = arr_ram.reverse().concat(arr_myhost.reverse());
+    }
+    if (setting.sourceOnHome) arr_ram = arr_ram.concat('home');
 
     for (let i = arr_target.length - 1; this.tree[arr_target[i]].maxMoney == 0;
          --i)
@@ -247,7 +257,7 @@ class Tree {
 
   writeHostObj() {
     ms.tprint('>>> writeHostObj()...');
-    const file2write = 'hostsObj.script';
+    const file2write = '/src/hostsObj.script';
     var str = JSON.stringify(this.outHostObj());
     ms.write(file2write, str, 'w');
     ms.tprint('<<< hostObj in ', file2write, ' has been written.')
@@ -295,7 +305,8 @@ async function purchaseMaxRamServer() {
       maxIndex = i + 1;
     }
     var nextIndex = maxIndex + 1 < 21 ? maxIndex + 1 : 20;
-    // ms.print(maxIndex,"\n",ms.getPurchasedServerCost(Math.pow(2, maxIndex)))
+    // ms.print(maxIndex,"\n",ms.getPurchasedServerCost(Math.pow(2,
+    // maxIndex)))
     return [
       bitFix(Math.pow(2, maxIndex)), moneyFix(cost), maxIndex,
       bitFix(Math.pow(2, nextIndex)),

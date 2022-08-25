@@ -3,12 +3,14 @@
 // return array of files include path, use for fileread which include other
 // files' name and their common path; e.g.attackFiles.script
 export function getFiles(ns, file_in) {
+  ns.print('=== getFiles() calling...');
   var obj = JSON.parse(ns.read(file_in));
   var out = [];
   // ns.tprint(obj);
   for (let i = 0; i < obj.files.length; ++i) {
     out.push(obj.dir + obj.files[i]);
   }
+  ns.print('=== getFiles() out with: ', out);
   return out;
 }
 

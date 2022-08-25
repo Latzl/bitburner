@@ -1,16 +1,15 @@
 
-import * as allin from './allin'
-const hostsObjFile = 'hostsObj.script';
-var files = [];
-var myServers = [];
-var cnt = 0;
+import * as allin from './src/allin.js'
+const settingFile = '/src/setting.script';
+const hostsObjFile = '/src/hostsObj.script';
+var files = [], myServers = [], setting;
 /* auto attack target server according to args[0], automatically choose source
  * server that perform hack, grow, weaken */
 export async function main(ns) {
   ns.clearLog();
   ns.disableLog('ALL')
-  files = allin.getFiles(ns, 'attackFiles.script');  // hack grow weaken
-
+  files = allin.getFiles(ns, '/src/attackFiles.script');  // hack grow weaken
+  setting = JSON.parse(ns.read(settingFile)).autoAttack;
   getMyServer(ns);
 
   var targetHost = ns.args[0];
@@ -25,8 +24,9 @@ class Target {
     this.minSecurity = this.ns.getServerMinSecurityLevel(this.host);
     this.maxSecurity = 40;  // this.minSecurity * 2;
     this.maxMoney = this.ns.getServerMaxMoney(this.host);
-    this.minMoney = this.maxMoney *
-        0.1;  // sset threshold, too low would make thread = -1 on hack;
+    this.minMoney =
+        setting.minMoneyFact * this.maxMoney;  // set threshold, too low would
+                                               // make thread = -1 on hack;
     this.sourceHost = '';
     this.cores = 1;
     this.runTimes = [0, 0, 0]  //[hack,grow,weaken];
@@ -39,7 +39,7 @@ class Target {
       if (!this.ns.fileExists(files[files.length - 1], myServers[i]))
         continue;  // deal with a new server do not receive copy in time;
       if (myServers[i] == 'home')  // remain 50GB for home;
-        var remain = 50;
+        var remain = 15;
       else
         var remain = 0;
       if (this.ns.getServerMaxRam(myServers[i]) -
@@ -99,7 +99,7 @@ class Target {
     var currMoney, finalMoney, currSecurity, finalSecurity, thread, ram,
         sourceHost;
     currMoney = this.ns.getServerMoneyAvailable(this.host);
-    if (currMoney >= this.maxMoney * 0.9) {
+    if (currMoney >= this.maxMoney * 0.7) {
       this.ns.print('<<< infoPreGrow() out with: money enough.')
       return -1;
     }
